@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Readex+Pro:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.new_meal{
+    font-family: Montserrat;
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    background: linear-gradient(-90deg, rgba(70,151,255,1) 50%, rgba(114,231,255,1) 100%);
+    padding: 20px 30px;
+    border-radius: 20px;
+}
+
+.dodaj{
+    width: 80px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+input[type=submit]{
+    padding:5px 15px; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+label{
+    margin-right: 15px;
+}
+.new_meal input[type=date]{
+    width: 110px;
+    text-align: center;
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.meal{
+    font-family: Montserrat;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    background: linear-gradient(90deg, rgba(70,151,255,1) 50%, rgba(114,231,255,1) 100%);
+    padding: 20px 30px;
+    border-radius: 20px;
+}
+
+.meal th{
+    padding-bottom: 25px;
+    text-align: left;
+}
+
+.meal p{
+    text-align: right;
+    padding-top: 15px;
+}
+
+a{
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover{
+    color:burlywood;
+}
+
+
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/style_navbar.css">
+  <link rel="stylesheet" href="static/style_add_meal.css">
+  <title>CaloriTracker</title>
+</head>
+<body>
+  <div class="upnav">
+    <h1>Novo jelo</h1>
+    <p class="k_sekcija">Korisnik: <p class="korisnik">{{ user }}</p></p>
+  </div>
+  <div class="navbar">
+    <ul>
+      <li class="first"><a href="{{url_for('home')}}">Home</a></li>
+      <!-- <li><a href="{{url_for('add_meal')}}">Novo jelo</a></li> -->
+      <li><a href="{{url_for('add_food')}}">Nova hrana</a></li>
+      <li class="last"><a href="{{url_for('logout')}}">Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="addMealForm">
+    <select name="food" id="food">
+      {% for food in food_name_list|reverse %}
+      <option value="">{{ food.food_name }}</option>
+      {% endfor %}
+    </select>
+    
+    <input class="dodaj" type="submit" value="Dodaj">
+  </div>
+
+  <div class="food_list">
+    <p class="date">Datum : 6.2.2023.</p>
+    <table>
+      <caption></caption>
+      <tr>
+          <th>ID</th>
+          <th>Ime hrane</th>
+          <th>Proteini</th>
+          <th>Ugljikohidrati</th>
+          <th>Masi</th>
+          <th>Kalorije</th>
+          <th>#</th>
+      </tr>
+
+      <!-- HARDKODIRANO!!! -->
+
+      <tr class="food_row">
+        <td>1</td>
+        <td>Jabuka</td>
+        <td>20</td>
+        <td>30</td>
+        <td>5</td>
+        <td>245</td>
+        <td><a class="delete_btn" href="" method = "post">Obriši</a></td>
+      </tr>
+
+      <tr class="food_row">
+        <td>2</td>
+        <td>Jaje</td>
+        <td>15</td>
+        <td>25</td>
+        <td>10</td>
+        <td>250</td>
+        <td><a class="delete_btn" href="" method = "post">Obriši</a></td>
+      </tr>
+
+      <tr class="food_row">
+        <td>3</td>
+        <td>Pizza</td>
+        <td>10</td>
+        <td>20</td>
+        <td>30</td>
+        <td>390</td>
+        <td><a class="delete_btn" href="" method = "post">Obriši</a></td>
+      </tr>
+
+    </table>
+
+    <p class="total_cal">Ukupno kalorija: 885</p>
+
+  </div>
+
+</body>
+</html>

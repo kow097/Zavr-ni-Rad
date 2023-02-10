@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaloriTracker</title>
+    <link rel="stylesheet" href="static/style_log_reg.css">
+</head>
+<body>
+    <h1>Registriraj se</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <form action="{{url_for('register')}}" method="post">
+        <label for="username">Korisničko ime</label>
+        <input type="text" id="username" name="username">
+
+        <label for="password">Lozinka</label>
+        <input type="password" id="password" name="password">
+        
+        <input type="submit" value="Register" class="button">
+        
+    </form>
+    <p>Imaš račun?  <a href="{{url_for('login')}}">Prijavi se ovdje!</a></p>
+</body>
+</html>

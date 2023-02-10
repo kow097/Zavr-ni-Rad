@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/style_navbar.css">
+  <link rel="stylesheet" href="static/style_home.css">
+  <title>CaloriTracker</title>
+</head>
+<body>
+  <div class="upnav">
+    <h1>Home</h1>
+    <p class="k_sekcija">Korisnik: <p class="korisnik">{{ user }}</p></p>
+  </div>
+  
+    <div class="navbar">
+      <ul>
+        <li class="first"><a href="{{url_for('home')}}">Home</a></li>
+        <!-- <li><a href="{{url_for('add_meal')}}">Novo jelo</a></li> -->
+        <li><a href="{{url_for('add_food')}}">Nova hrana</a></li>
+        <li class="last"><a href="{{url_for('logout')}}">Logout</a></li>
+      </ul>
+    </div>
+
+
+    <form action="{{url_for('add_meal')}}">
+      <div class="new_meal">
+        <label for="datum">Datum:</label>
+        <input type="date" id="datum" name="datum">
+        <input class="dodaj" type="submit" value="Dodaj">
+      </div>
+    </form>
+
+<!-- HARDKODIRANO!!!! -->
+    <div class="content">
+
+      <div class="meal">
+        <table>
+          <th>Datum: 6.2.2023.</th>
+          <tr>
+            <td>Proteini:</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td>Ugljikohidrati:</td>
+            <td>75</td>
+          </tr>
+          <tr>
+            <td>Masti:</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td>Kalorije:</td>
+            <td>885</td>
+          </tr>
+        </table>
+        <p><a href="{{url_for('add_meal')}}">POGLEDAJ</a></p>
+      </div>
+
+      <div class="meal">
+        <table>
+          <th>Datum: 6.2.2023.</th>
+          <tr>
+            <td>Proteini:</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td>Ugljikohidrati:</td>
+            <td>75</td>
+          </tr>
+          <tr>
+            <td>Masti:</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td>Kalorije:</td>
+            <td>885</td>
+          </tr>
+        </table>
+        <p><a href="{{url_for('add_meal')}}">POGLEDAJ</a></p>
+      </div>
+
+      <div class="meal">
+        <table>
+          <th>Datum: 6.2.2023.</th>
+          <tr>
+            <td>Proteini:</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td>Ugljikohidrati:</td>
+            <td>75</td>
+          </tr>
+          <tr>
+            <td>Masti:</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td>Kalorije:</td>
+            <td>885</td>
+          </tr>
+        </table>
+        <p><a href="{{url_for('add_meal')}}">POGLEDAJ</a></p>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>
