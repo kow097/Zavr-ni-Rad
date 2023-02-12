@@ -17,14 +17,14 @@
     <div class="navbar">
       <ul>
         <li class="first"><a href="{{url_for('home')}}">Home</a></li>
-        <!-- <li><a href="{{url_for('add_meal')}}">Novo jelo</a></li> -->
+        <!-- <li><a href="{{url_for('add_food_for_meal')}}">Novo jelo</a></li> -->
         <li><a href="{{url_for('add_food')}}">Nova hrana</a></li>
         <li class="last"><a href="{{url_for('logout')}}">Logout</a></li>
       </ul>
     </div>
 
 
-    <form action="{{url_for('add_meal')}}">
+    <form action="{{url_for('add_food_for_meal')}}">
       <div class="new_meal">
         <label for="datum">Datum:</label>
         <input type="date" id="datum" name="datum">
@@ -55,7 +55,7 @@
             <td>885</td>
           </tr>
         </table>
-        <p><a href="{{url_for('add_meal')}}">POGLEDAJ</a></p>
+        <p><a href="{{url_for('add_food_for_meal')}}">POGLEDAJ</a></p>
       </div>
 
       <div class="meal">
@@ -78,7 +78,7 @@
             <td>885</td>
           </tr>
         </table>
-        <p><a href="{{url_for('add_meal')}}">POGLEDAJ</a></p>
+        <p><a href="{{url_for('add_food_for_meal')}}">POGLEDAJ</a></p>
       </div>
 
       <div class="meal">
@@ -101,7 +101,7 @@
             <td>885</td>
           </tr>
         </table>
-        <p><a href="{{url_for('add_meal')}}">POGLEDAJ</a></p>
+        <p><a href="{{url_for('add_food_for_meal')}}">POGLEDAJ</a></p>
       </div>
 
     </div>

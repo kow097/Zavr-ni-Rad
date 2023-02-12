@@ -5,7 +5,7 @@
     padding: 0;
 }
 
-.addMealForm{
+.addMealForm form{
     font-family: Montserrat;
     display: flex;
     flex-direction: row;

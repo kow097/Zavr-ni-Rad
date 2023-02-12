@@ -58,6 +58,16 @@ label{
     margin-right: auto;
 }
 
+.add{
+    display: flex;
+    flex-direction: row;
+}
+
+.add p{
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
 .dodaj{
     display: flex;
     margin-top: 20px;

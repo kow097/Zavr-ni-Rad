@@ -16,7 +16,7 @@
   <div class="navbar">
     <ul>
       <li class="first"><a href="{{url_for('home')}}">Home</a></li>
-      <!-- <li><a href="{{url_for('add_meal')}}">Novo jelo</a></li> -->
+      <!-- <li><a href="{{url_for('add_food_for_meal')}}">Novo jelo</a></li> -->
       <li><a href="{{url_for('add_food')}}">Nova hrana</a></li>
       <li class="last"><a href="{{url_for('logout')}}">Logout</a></li>
     </ul>
@@ -34,21 +34,23 @@
 
         <div class="prot">
           <label for="proteins">Proteini</label>
-          <input type="number" name="proteins" id="proteins">
+          <input type="number" min="0" step="0.1" name="proteins" id="proteins">
         </div>
 
         <div class="carbs">
           <label for="carbs">Ugljikohidrati</label>
-          <input type="number" name="carbs" id="carbs">
+          <input type="number" min="0" step="0.1" name="carbs" id="carbs">
         </div>
 
         <div class="fats">
           <label for="fats">Masti</label>
-          <input type="number" name="fats" id="fats">
+          <input type="number" min="0" step="0.1" name="fats" id="fats">
         </div>
       </div>
-
-      <input class="dodaj" type="submit" value="Dodaj">
+      <div class="add">
+        <p>*porcija na 100g</p>
+        <input class="dodaj" type="submit" value="Dodaj">
+      </div>
     </form>
   </div>
 
@@ -56,7 +58,7 @@
     <table>
       <caption></caption>
       <tr>
-          <th>ID</th>
+          <th>Br.</th>
           <th>Ime hrane</th>
           <th>Proteini</th>
           <th>Ugljikohidrati</th>
@@ -66,11 +68,11 @@
       </tr>
       {% for food in food_list %}
       <tr class="food_row">
-        <td>{{ food.id }}</td>
-        <td>{{ food.food_name }}</td>
-        <td>{{ food.proteins }}</td>
-        <td>{{ food.carbs }}</td>
-        <td>{{ food.fats }}</td>
+        <td>{{ loop.index }}</td>
+        <td>{{ food.name }}</td>
+        <td>{{ food.proteins }}g</td>
+        <td>{{ food.carbs }}g</td>
+        <td>{{ food.fats }}g</td>
         <td>{{ food.calories }}</td>
         <td><a class="delete_btn" href="{{ url_for('delete_food', food_id=food.id) }}" method = "post">Obriši</a></td>
       </tr>

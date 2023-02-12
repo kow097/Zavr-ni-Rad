@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="static/style_navbar.css">
-  <link rel="stylesheet" href="static/style_add_meal.css">
+  <link rel="stylesheet" href="static/style_add_food_for_meal.css">
   <title>CaloriTracker</title>
 </head>
 <body>
@@ -16,20 +16,22 @@
   <div class="navbar">
     <ul>
       <li class="first"><a href="{{url_for('home')}}">Home</a></li>
-      <!-- <li><a href="{{url_for('add_meal')}}">Novo jelo</a></li> -->
+      <!-- <li><a href="{{url_for('add_food_for_meal')}}">Novo jelo</a></li> -->
       <li><a href="{{url_for('add_food')}}">Nova hrana</a></li>
       <li class="last"><a href="{{url_for('logout')}}">Logout</a></li>
     </ul>
   </div>
 
   <div class="addMealForm">
-    <select name="food" id="food">
-      {% for food in food_name_list|reverse %}
-      <option value="">{{ food.food_name }}</option>
-      {% endfor %}
-    </select>
-    
-    <input class="dodaj" type="submit" value="Dodaj">
+    <form action="">
+      <select name="food" id="food">
+        {% for food in food_name_list %}
+        <option value="">{{ food.name }}</option>
+        {% endfor %}
+      </select>
+      
+      <input class="dodaj" type="submit" value="Dodaj">
+    </form>
   </div>
 
   <div class="food_list">
