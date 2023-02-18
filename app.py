@@ -247,13 +247,7 @@ def add_food_for_meal():
 
         latest_meal = Meal.query.filter_by(user_id=user.id).order_by(Meal.id.desc()).first()
         latest_date = latest_meal.date
-
-        #lista hrane u select-u
         food_name_list = Food.query.with_entities(Food.name).all()
-
-        #meal = Meal.query.filter_by(date=date).first()
-        #meal = Meal.query.filter_by(user_id=user.id, date=date).first()
-        #meal = Meal.query.order_by(Meal.id.desc()).first()
         
         meal = Meal.query.filter_by(user_id=user.id).order_by(Meal.id.desc()).first()
         food_in_meal = meal.foods
@@ -267,14 +261,15 @@ def add_food_for_meal():
 
 @app.route('/add_food_in_meal', methods=['GET', 'POST'])
 def add_food_in_meal():
-    if request.method == 'POST':
+    if request.method == 'POST' and 'food' in request.form:
         food_name = request.form['food']
         food = Food.query.filter_by(name=food_name).first()
         meal = Meal.query.order_by(Meal.id.desc()).first() #posljenji meal koji je dodan u bazi
         meal.foods.append(food) # dodaje hranu u meal
         db.session.commit()
         return redirect(url_for('add_food_for_meal'))
-        
+    else:
+        return redirect(url_for('add_food_for_meal'))
 
 @app.route('/delete_food_from_meal/<food_name>/<datum>', methods=['POST'])
 def delete_food_from_meal(food_name,datum):
@@ -292,18 +287,23 @@ def delete_food_from_meal(food_name,datum):
 
 @app.route('/add_food')
 def add_food():
+    message = ''
     if 'username' in session:
         user = session['username']
 
         food_list = Food.query.all()
 
-        return render_template('add_food.html', user = user, food_list = food_list)
+        if 'message' in session:
+            message = session['message']
+            session.pop('message', None)
+
+        return render_template('add_food.html', user = user, food_list = food_list, message=message)
     else:
         return render_template('login.html')
 
 @app.route('/add_new_food', methods=['GET','POST'])
 def add_new_food():
-    if request.method == 'POST':
+    if request.method == 'POST' and request.form.get('food_name') and request.form.get('proteins') and request.form.get('carbs') and request.form.get('fats'):
         food_name = request.form['food_name']
         proteins = float(request.form['proteins'])
         carbs = float(request.form['carbs'])
@@ -314,7 +314,10 @@ def add_new_food():
         food = Food(name=food_name, proteins=proteins, carbs=carbs, fats=fats, calories=calories)
         db.session.add(food)
         db.session.commit()
-
+    else:
+        message = 'Popunite formu!'
+        session['message'] = message
+        return redirect(url_for('add_food'))
     return redirect(url_for('add_food'))
 
 @app.route('/delete_food/<food_id>')

@@ -36,7 +36,7 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 250px;
+    width: 350px;
     font-size: 32px;
     margin-top: 10px;
     font-weight: 300;
