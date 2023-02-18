@@ -11,12 +11,14 @@
 <body>
   <div class="upnav">
     <h1>Nova hrana</h1>
-    <p class="k_sekcija">Korisnik: <p class="korisnik">{{ user }}</p></p>
+    <p class="message"></p>
+    <div class="k_sekcija">
+      <p>Korisnik: <p class="korisnik">{{ user }}</p></p>
+    </div>
   </div>
   <div class="navbar">
     <ul>
       <li class="first"><a href="{{url_for('home')}}">Home</a></li>
-      <!-- <li><a href="{{url_for('add_food_for_meal')}}">Novo jelo</a></li> -->
       <li><a href="{{url_for('add_food')}}">Nova hrana</a></li>
       <li class="last"><a href="{{url_for('logout')}}">Logout</a></li>
     </ul>

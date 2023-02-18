@@ -11,20 +11,23 @@
 <body>
   <div class="upnav">
     <h1>Home</h1>
-    <p class="k_sekcija">Korisnik: <p class="korisnik">{{ user }}</p></p>
+    <p class="message">{{ message }}</p>
+    <div class="k_sekcija">
+      <p>Korisnik: <p class="korisnik">{{ user }}</p></p>
+    </div>
   </div>
   
     <div class="navbar">
       <ul>
         <li class="first"><a href="{{url_for('home')}}">Home</a></li>
-        <!-- <li><a href="{{url_for('add_food_for_meal')}}">Novo jelo</a></li> -->
         <li><a href="{{url_for('add_food')}}">Nova hrana</a></li>
         <li class="last"><a href="{{url_for('logout')}}">Logout</a></li>
       </ul>
     </div>
 
+    
 
-    <form action="{{url_for('add_food_for_meal')}}">
+    <form action="{{url_for('add_new_meal')}}" method="post">
       <div class="new_meal">
         <label for="datum">Datum:</label>
         <input type="date" id="datum" name="datum">
@@ -32,79 +35,46 @@
       </div>
     </form>
 
-<!-- HARDKODIRANO!!!! -->
+
+
+    
     <div class="content">
-
-      <div class="meal">
-        <table>
-          <th>Datum: 6.2.2023.</th>
-          <tr>
-            <td>Proteini:</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>Ugljikohidrati:</td>
-            <td>75</td>
-          </tr>
-          <tr>
-            <td>Masti:</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>Kalorije:</td>
-            <td>885</td>
-          </tr>
-        </table>
-        <p><a href="{{url_for('add_food_for_meal')}}">POGLEDAJ</a></p>
-      </div>
-
-      <div class="meal">
-        <table>
-          <th>Datum: 6.2.2023.</th>
-          <tr>
-            <td>Proteini:</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>Ugljikohidrati:</td>
-            <td>75</td>
-          </tr>
-          <tr>
-            <td>Masti:</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>Kalorije:</td>
-            <td>885</td>
-          </tr>
-        </table>
-        <p><a href="{{url_for('add_food_for_meal')}}">POGLEDAJ</a></p>
-      </div>
-
-      <div class="meal">
-        <table>
-          <th>Datum: 6.2.2023.</th>
-          <tr>
-            <td>Proteini:</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>Ugljikohidrati:</td>
-            <td>75</td>
-          </tr>
-          <tr>
-            <td>Masti:</td>
-            <td>45</td>
-          </tr>
-          <tr>
-            <td>Kalorije:</td>
-            <td>885</td>
-          </tr>
-        </table>
-        <p><a href="{{url_for('add_food_for_meal')}}">POGLEDAJ</a></p>
-      </div>
-
+      {% for row in meal_sums|batch(1) %}
+        <div class="meal">
+          {% for meal_sum in row %}
+            <table>
+              <th>Datum: {{ meal_sum['meal_sums'].date.strftime('%d.%m.%Y') }}</th>
+              <tr>
+                  <td>Proteini:</td>
+                  <td>{{ meal_sum['proteins'] }}</td>
+              </tr>
+              <tr>
+                  <td>Ugljikohidrati:</td>
+                  <td>{{ meal_sum['carbs'] }}</td>
+              </tr>
+              <tr>
+                  <td>Masti:</td>
+                  <td>{{ meal_sum['fats'] }}</td>
+              </tr>
+              <tr>
+                  <td>Kalorije:</td>
+                  <td>{{ meal_sum['calories'] }}</td>
+              </tr>
+            </table>
+            
+            <div class="meal_edit">
+              <form action="{{ url_for('delete_meal', meal_id=meal_sum['meal_sums'].id) }}" method="POST">
+                <input type="submit" class="dodaj" value="Obriši">
+              </form>
+              <form action="{{ url_for('preview_meal', meal_id=meal_sum['meal_sums'].id) }}" method="POST">
+                <input type="submit" class="dodaj" value="Pogledaj">
+              </form>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
     </div>
+
 
   </body>
 

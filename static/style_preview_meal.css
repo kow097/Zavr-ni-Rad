@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Readex+Pro:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.addMealForm form{
+    font-family: Montserrat;
+    display: flex;
+    flex-direction: row;
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    background: linear-gradient(-90deg, rgba(70,151,255,1) 50%, rgba(114,231,255,1) 100%);
+    padding: 20px 30px;
+    border-radius: 20px;
+}
+
+select{
+    width: 200px;
+    padding: 5px 20px;
+    font-size: 15px;
+}
+
+.dodaj{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.date{
+    padding: 10px 5px;
+    font-size: 20px;
+    font-weight: 450;
+}
+
+.total_cal{
+    text-align: right;
+    margin-right: 25px;
+    padding: 10px 5px;
+    font-size: 20px;
+    font-weight: 450;
+}
+
+input[type=submit]{
+    padding:5px 15px; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+.food_list{
+    margin-top: 50px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+}
+
+.food_row:nth-child(odd){
+    background-color: #dceeff;
+}
+
+table{
+    width: 100%;
+}
+
+td{
+    text-align: center;
+}
+
+.food_row:nth-child(odd){
+    background-color: #dceeff;
+}
+
+.delete_btn {
+    text-decoration: none;
+    color: brown;
+}

@@ -5,16 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="static/style_navbar.css">
-  <link rel="stylesheet" href="static/style_add_food_for_meal.css">
+  <link rel="stylesheet" href="style_preview_meal.css">
   <title>CaloriTracker</title>
 </head>
 <body>
   <div class="upnav">
     <h1>Novo jelo</h1>
-    <p class="message"></p>
-    <div class="k_sekcija">
-      <p>Korisnik: <p class="korisnik">{{ user }}</p></p>
-    </div>
+    <p class="k_sekcija">Korisnik: <p class="korisnik">{{ user }}</p></p>
   </div>
   <div class="navbar">
     <ul>
@@ -25,7 +22,7 @@
   </div>
 
   <div class="addMealForm">
-    <form action="{{url_for('add_food_in_meal')}}" method="post">
+    <form action="{{url_for('add_food_existing_meal', meal_id=meal.id)}}" method="post">
       <select name="food" id="food">
         {% for food in food_name_list %}
         <option value="{{ food.name }}">{{ food.name }}</option>
@@ -37,7 +34,7 @@
   </div>
 
   <div class="food_list">
-    <p class="date">Datum : {{ date }}</p>
+    <p class="date">Datum: {{ date.strftime('%d.%m.%Y') }}</p>
     <table>
       <caption></caption>
       <tr>
@@ -58,14 +55,13 @@
         <td>{{ food.fats }}g</td>
         <td>{{ food.calories }}</td>
         <td>
-          <form method = "post" action="{{url_for('delete_food_from_meal', food_name=food.name, datum=date)}}">
-            <input type="hidden" name="datum" value="{{ date }}">
-            <input type="hidden" name="food_name" value="{{ food.name }}">
+          <form method="post" action="{{ url_for('delete_food_existing_meal', meal_id=meal.id) }}">
+            <input type="hidden" name="food_id" value="{{ food.id }}">
             <input class="delete_btn" type="submit" value="Obriši">
           </form>
         </td>
       </tr>
-      {% endfor %}
+    {% endfor %}
     </table>
 
     <p class="total_cal">Ukupno kalorija: {{ total_calories }}</p>

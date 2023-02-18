@@ -37,14 +37,24 @@ input[type=submit]{
 label{
     margin-right: 15px;
 }
+
+form{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .new_meal input[type=date]{
-    width: 110px;
     text-align: center;
 }
 
+
+
 .content{
+    max-width: 1500px;
     display: flex;
     flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .meal{
@@ -52,12 +62,19 @@ label{
     display: flex;
     flex-direction: column;
     width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 15px;
+    margin-right: 15px;
     margin-top: 50px;
     background: linear-gradient(90deg, rgba(70,151,255,1) 50%, rgba(114,231,255,1) 100%);
     padding: 20px 30px;
     border-radius: 20px;
+}
+
+.meal_edit{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
 .meal th{
